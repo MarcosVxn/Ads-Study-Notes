@@ -1,5 +1,5 @@
 lib/
 bin/
-*.class
+.class
 vscode/
-*.settings.json
+.settings.json
