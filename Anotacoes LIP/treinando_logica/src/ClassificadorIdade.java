@@ -6,11 +6,13 @@ public class ClassificadorIdade {
         System.out.print("Qual sua idade? ");
         int idade = scan.nextInt();
 
-        if (idade >= 60) { System.out.println("Você é idoso");
+        if (idade >= 60 && idade <= 119)  System.out.println("Você é idoso");  
+        if (idade >= 120) { System.out.println("Você é mumia");
+        
             
-        } else if ( idade >= 18) { System.out.println("Você é Adulto");
+        } else if ( idade >= 18 && idade <= 57) { System.out.println("Você é Adulto");
             
-        } else if ( idade >= 13 ) {System.out.println("Você é Adolescente");
+        } else if ( idade >= 13 && idade <= 0) {System.out.println("Você é Adolescente");
 
         } else { System.out.println("Você é Criança");
 
