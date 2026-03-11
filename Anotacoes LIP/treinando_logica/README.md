@@ -1,18 +1,66 @@
-## Getting Started
+# Treinando Lógica de Programação em Java ☕
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Este diretório contém exercícios que estou desenvolvendo para treinar lógica de programação utilizando **Java**.
 
-## Folder Structure
+Os códigos aqui fazem parte do meu processo de aprendizado durante o curso de **Análise e Desenvolvimento de Sistemas** e também de estudos complementares.
 
-The workspace contains two folders by default, where:
+---
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Objetivo
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Praticar conceitos fundamentais de programação, como:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- Entrada de dados com `Scanner`
+- Estruturas condicionais (`if`, `else if`, `else`)
+- Operadores lógicos e relacionais
+- Operações matemáticas
+- Organização e leitura de código
+- Saída formatada com `printf`
 
-## Dependency Management
+---
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Exercícios presentes
+
+Alguns exemplos de exercícios que estão nesta pasta:
+
+- **VerificadorNumero**  
+Verifica se um número é positivo, negativo ou zero.
+
+- **ParOuImpar**  
+Identifica se um número é par ou ímpar utilizando o operador `%`.
+
+- **VerificadorCompletoNumero**  
+Classifica números como:
+- par positivo
+- ímpar positivo
+- par negativo
+- ímpar negativo
+- zero
+
+- **ClassificadorIdade**  
+Classifica uma pessoa como:
+- criança
+- adolescente
+- adulto
+- idoso
+
+- **CalculadoraIMC**  
+Recebe dados do usuário e calcula o **IMC (Índice de Massa Corporal)**.
+
+---
+
+## Tecnologias utilizadas
+
+- Java
+- Visual Studio Code
+- Git
+- GitHub
+
+---
+
+## Observação
+
+Este repositório faz parte da minha jornada de aprendizado em programação.  
+Os códigos podem evoluir com o tempo conforme eu aprendo novos conceitos.
+
+🚀 Documentando minha evolução na programação.
