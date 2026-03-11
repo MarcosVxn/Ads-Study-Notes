@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio do País</title>
+</head>
+<body>
+    <h1>Desafio do País</h1>
+    De qual pais você é <input type="text" id="ps1">
+    <input type="button" value="Verificar" onclick="verificar()">
+    <div id="res"></div>
+
+    <script>
+        var país = document.querySelector('input#ps1')
+        var res = document.querySelector('div#res')
+        
+        function verificar(){
+            res.innerHTML += `Você esta vivendo no <strong>${país.value}</strong>`
+             
+            if (país.value == 'Brasil'){
+                res.innerHTML += ` ,Você é Brasileiro`
+            }else {
+                res.innerHTML += `Você é Estrangeiro`
+            }
+        }
+
+    </script>
+</body>
+</html>

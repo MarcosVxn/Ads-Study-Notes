@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="centralizar">
+        <div id="area">
+            <div id=bloco>
+                <h1>Teste de mensagem</h1>
+                <input type="button" value="Clique aqui" id="msg1">
+                <p id="res"></p>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <script>
+        var msg1 = document.getElementById('msg1')
+        var res = document.getElementById('res')
+       
+        msg1.addEventListener('click', clicou)
+        
+
+
+        function clicou(){
+            alert('você clicou!')
+             var nome = prompt('qual seu nome?')
+             var idade = prompt('qual sua idade?')
+            res.innerHTML = `Muito prazer te conhecer, <strong>${nome}</strong>! vi que vc tem <strong>${idade}</strong>`
+            
+        }
+         
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de if com imagem</title>
+</head>
+<body>
+    <h1>Teste de If</h1>
+    <p>esse é o primeiro teste</p>
+    qual sua idade <input type="text" id="txt1">
+    <input type="button" value="Verificar" id="btn1" onclick="verificar">
+    
+
+    <script>
+        var tx1 = document.getElementById('txt1')
+        var bt1 = document.getElementById('btn1')
+        var im1 = document.getElementById('img1')
+
+        function verificar(){
+            var idade = Number(tx1.value)
+            
+
+            if (idade <= 60){
+                im1.src = "download.jpeg"
+                im1.alt = "velha"
+            }
+                
+        }
+    </script>
+</body>
+</html>

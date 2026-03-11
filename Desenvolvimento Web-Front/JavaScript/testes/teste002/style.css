@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+body{
+    background-color: cornflowerblue;
+    
+}
+.centralizar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+div#area{
+    font: 25px Arial;
+    color: rgb(255, 255, 255);
+    text-align:center;
+    
+    
+}
+
+div#bloco{
+    background: purple;
+    width: 490px;
+    height: 240px;
+    border-radius: 25px;
+
+
+}
+
+
