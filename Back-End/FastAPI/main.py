@@ -8,6 +8,7 @@ from order_routes import order_router
 app.include_router(auth_router)
 app.include_router(order_router)
 
+# As rotas são importadas após a criação do app para evitar uma importação circular e garantir que o app seja criado primeiro.
 # O código acima registra as rotas externas na aplicação principal (app).
 
 # Para rodar o código, executar no terminal: uvicorn main:app --reload
