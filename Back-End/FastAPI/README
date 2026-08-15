@@ -1,7 +1,7 @@
 # 🍕 Pizzaria API
 
-> ⚠️ **Status:** Em desenvolvimento
-> Projeto desenvolvido durante meus estudos de **Back-End com Python e FastAPI**, acompanhando o curso da Hashtag Programação.
+> ⚠️ **Status:** Em desenvolvimento  
+> Projeto desenvolvido durante meus estudos de **Back-End com Python e FastAPI**, acompanhando o curso de **FastAPI da Hashtag Programação**.  
 > **Progresso atual: Aula 04 / 10**
 
 ---
@@ -10,7 +10,9 @@
 
 Este projeto consiste no desenvolvimento do **Back-End de uma API REST para uma pizzaria**, criada com **Python e FastAPI**.
 
-O objetivo principal é colocar em prática os conceitos estudados durante o curso, trabalhando com criação de APIs, organização de rotas, banco de dados, modelagem com ORM e migrations.
+O projeto está sendo desenvolvido como parte dos meus estudos de **Back-End com Python e FastAPI**, acompanhando o curso de **FastAPI da Hashtag Programação**.
+
+O objetivo principal é colocar em prática os conceitos apresentados durante as aulas, trabalhando com criação de APIs, organização de rotas, banco de dados, modelagem com ORM e migrations.
 
 A documentação deste repositório representa **somente o estado atual do projeto até a Aula 04/10**. Novos recursos serão adicionados conforme o avanço das aulas.
 
@@ -20,27 +22,27 @@ A documentação deste repositório representa **somente o estado atual do proje
 
 ### Linguagem e Framework
 
-* **Python** — linguagem utilizada no desenvolvimento da aplicação.
-* **FastAPI** — framework utilizado para construção da API.
-* **Uvicorn** — servidor utilizado para executar a aplicação.
+- **Python** — linguagem utilizada no desenvolvimento da aplicação.
+- **FastAPI** — framework utilizado para construção da API.
+- **Uvicorn** — servidor utilizado para executar a aplicação.
 
 ### Banco de Dados
 
-* **SQLite** — banco de dados utilizado no desenvolvimento local.
-* **SQLAlchemy** — ORM utilizado para mapear e trabalhar com as tabelas do banco.
-* **Alembic** — utilizado para criação e gerenciamento das migrations.
+- **SQLite** — banco de dados utilizado no desenvolvimento local.
+- **SQLAlchemy** — ORM utilizado para mapear e trabalhar com as tabelas do banco.
+- **Alembic** — utilizado para criação e gerenciamento das migrations.
 
 ### Bibliotecas
 
-* **Passlib + Bcrypt** — utilizado para realizar o hashing das senhas.
-* **Python-dotenv** — utilizado para gerenciamento de variáveis de ambiente.
-* **Python-multipart** — suporte para processamento de dados enviados por formulários.
+- **Passlib + Bcrypt** — utilizado para realizar o hashing das senhas.
+- **Python-dotenv** — utilizado para gerenciamento de variáveis de ambiente.
+- **Python-multipart** — suporte para processamento de dados enviados por formulários.
 
 ### Ferramentas
 
-* **Visual Studio Code**
-* **Git**
-* **GitHub**
+- **Visual Studio Code**
+- **Git**
+- **GitHub**
 
 ---
 
@@ -72,25 +74,25 @@ FastAPI/
 
 ### Organização dos arquivos
 
-**`main.py`**
+**`main.py`**  
 Arquivo principal responsável pela inicialização da aplicação FastAPI e pelo registro das rotas.
 
-**`auth_routes.py`**
+**`auth_routes.py`**  
 Contém as rotas relacionadas à autenticação e usuários.
 
-**`order_routes.py`**
+**`order_routes.py`**  
 Contém as rotas relacionadas aos pedidos.
 
-**`models.py`**
+**`models.py`**  
 Define os modelos utilizados pelo SQLAlchemy para representar as tabelas do banco.
 
-**`dependencies.py`**
+**`dependencies.py`**  
 Responsável pelas dependências utilizadas pela aplicação, incluindo o gerenciamento da sessão do banco de dados.
 
-**`alembic/`**
+**`alembic/`**  
 Diretório responsável pelo gerenciamento e histórico das migrations.
 
-**`data/`**
+**`data/`**  
 Diretório utilizado para armazenar o banco SQLite durante o desenvolvimento local.
 
 ---
@@ -99,19 +101,19 @@ Diretório utilizado para armazenar o banco SQLite durante o desenvolvimento loc
 
 Até a **Aula 04/10**, o projeto possui:
 
-* [x] Configuração da aplicação FastAPI.
-* [x] Execução da aplicação utilizando Uvicorn.
-* [x] Organização das rotas utilizando `APIRouter`.
-* [x] Conexão com banco de dados SQLite.
-* [x] Integração do SQLAlchemy com a aplicação.
-* [x] Criação dos modelos do banco.
-* [x] Configuração do Alembic.
-* [x] Criação e aplicação da migration inicial.
-* [x] Cadastro de usuários.
-* [x] Hashing das senhas com `Passlib` e `Bcrypt`.
-* [x] Rotas iniciais para autenticação.
-* [x] Rota inicial para pedidos.
-* [x] Documentação automática da API através do Swagger/OpenAPI.
+- [x] Configuração da aplicação FastAPI.
+- [x] Execução da aplicação utilizando Uvicorn.
+- [x] Organização das rotas utilizando `APIRouter`.
+- [x] Conexão com banco de dados SQLite.
+- [x] Integração do SQLAlchemy com a aplicação.
+- [x] Criação dos modelos do banco.
+- [x] Configuração do Alembic.
+- [x] Criação e aplicação da migration inicial.
+- [x] Cadastro de usuários.
+- [x] Hashing das senhas com `Passlib` e `Bcrypt`.
+- [x] Rotas iniciais para autenticação.
+- [x] Rota inicial para pedidos.
+- [x] Documentação automática da API através do Swagger/OpenAPI.
 
 ---
 
@@ -180,12 +182,12 @@ Tabela responsável pelo armazenamento dos usuários.
 
 Principais campos:
 
-* `id` — chave primária.
-* `username` — nome do usuário.
-* `email` — e-mail do usuário.
-* `password` — senha armazenada em formato de hash.
-* `is_staff` — indica privilégios administrativos.
-* `is_active` — indica se o usuário está ativo.
+- `id` — chave primária.
+- `username` — nome do usuário.
+- `email` — e-mail do usuário.
+- `password` — senha armazenada em formato de hash.
+- `is_staff` — indica privilégios administrativos.
+- `is_active` — indica se o usuário está ativo.
 
 ### 🍕 Order
 
@@ -193,11 +195,11 @@ Tabela responsável pelos pedidos.
 
 Principais campos:
 
-* `id` — chave primária.
-* `quantity` — quantidade de itens do pedido.
-* `order_status` — status do pedido.
-* `pizza_size` — tamanho da pizza.
-* `user_id` — chave estrangeira relacionada ao usuário.
+- `id` — chave primária.
+- `quantity` — quantidade de itens do pedido.
+- `order_status` — status do pedido.
+- `pizza_size` — tamanho da pizza.
+- `user_id` — chave estrangeira relacionada ao usuário.
 
 ---
 
@@ -211,9 +213,9 @@ Realiza o cadastro de um novo usuário.
 
 Os dados recebidos incluem informações como:
 
-* Username
-* E-mail
-* Senha
+- Username
+- E-mail
+- Senha
 
 Antes de ser armazenada, a senha passa pelo processo de **hashing**.
 
@@ -293,16 +295,16 @@ http://127.0.0.1:8000/docs
 
 Este projeto está sendo utilizado para praticar conceitos de desenvolvimento Back-End, incluindo:
 
-* Construção de APIs REST com **FastAPI**.
-* Organização de rotas com `APIRouter`.
-* Utilização de dependências.
-* Integração entre Python e banco de dados.
-* Modelagem de tabelas com **SQLAlchemy**.
-* Gerenciamento de migrations com **Alembic**.
-* Persistência de dados utilizando **SQLite**.
-* Hashing de senhas.
-* Organização de projetos Back-End.
-* Documentação automática de APIs.
+- Construção de APIs REST com **FastAPI**.
+- Organização de rotas com `APIRouter`.
+- Utilização de dependências.
+- Integração entre Python e banco de dados.
+- Modelagem de tabelas com **SQLAlchemy**.
+- Gerenciamento de migrations com **Alembic**.
+- Persistência de dados utilizando **SQLite**.
+- Hashing de senhas.
+- Organização de projetos Back-End.
+- Documentação automática de APIs.
 
 ---
 
@@ -310,7 +312,7 @@ Este projeto está sendo utilizado para praticar conceitos de desenvolvimento Ba
 
 O projeto ainda está em desenvolvimento.
 
-Conforme eu avanço nas próximas aulas do curso, novas funcionalidades, regras de negócio e recursos da API serão adicionados.
+Conforme avanço nas próximas aulas do curso, novas funcionalidades, regras de negócio e recursos da API serão adicionados.
 
 > 📌 **Progresso atual:** Aula 04 / 10
 
@@ -322,4 +324,4 @@ Conforme eu avanço nas próximas aulas do curso, novas funcionalidades, regras 
 
 Estudante de **Análise e Desenvolvimento de Sistemas**
 
-[![GitHub](https://img.shields.io/badge/GitHub-MarcosVxn-000000?style=flat\&logo=github\&logoColor=7A1FFF)](https://github.com/MarcosVxn)
+[GitHub](https://github.com/MarcosVxn)
