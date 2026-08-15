@@ -1,4 +1,4 @@
-# 🍕 Pizzaria API
+# 🍕 Pizzaria Api
 
 > ⚠️ **Status:** Em desenvolvimento  
 > Projeto desenvolvido durante meus estudos de **Back-End com Python e FastAPI**, acompanhando o curso de **FastAPI da Hashtag Programação**.  
