@@ -1,12 +1,8 @@
-# 🍕 Pizzaria Api
+# 🍕 Pizzaria API
 
 > ⚠️ **Status:** Em desenvolvimento  
 > Projeto desenvolvido durante meus estudos de **Back-End com Python e FastAPI**, acompanhando o curso de **FastAPI da Hashtag Programação**.  
-<<<<<<< HEAD:Back-End/FastAPI/README.md
-> **Progresso atual: Aula 04 / 10**
-=======
 > **Aula 04/10 concluída — Progresso atual: Aula 05/10**
->>>>>>> 6612e7a (docs: update FastAPI project progress):Back-End/FastAPI/README
 
 ---
 
@@ -15,11 +11,6 @@
 Este projeto consiste no desenvolvimento do **Back-End de uma API REST para uma pizzaria**, criada com **Python e FastAPI**.
 
 O projeto está sendo desenvolvido como parte dos meus estudos de **Back-End com Python e FastAPI**, acompanhando o curso de **FastAPI da Hashtag Programação**.
-<<<<<<< HEAD:Back-End/FastAPI/README.md
-
-O objetivo principal é colocar em prática os conceitos apresentados durante as aulas, trabalhando com criação de APIs, organização de rotas, banco de dados, modelagem com ORM e migrations.
-=======
->>>>>>> 6612e7a (docs: update FastAPI project progress):Back-End/FastAPI/README
 
 O objetivo principal é colocar em prática os conceitos apresentados durante as aulas, trabalhando com criação de APIs, organização de rotas, banco de dados, modelagem com ORM, migrations, dependências e autenticação.
 
@@ -118,19 +109,12 @@ Diretório utilizado para armazenar o banco SQLite durante o desenvolvimento loc
 - [x] Criação dos modelos do banco.
 - [x] Configuração do Alembic.
 - [x] Criação e aplicação da migration inicial.
-<<<<<<< HEAD:Back-End/FastAPI/README.md
-- [x] Cadastro de usuários.
-- [x] Hashing das senhas com `Passlib` e `Bcrypt`.
-- [x] Rotas iniciais para autenticação.
-- [x] Rota inicial para pedidos.
-=======
 - [x] Configuração de dependências para acesso à sessão do banco.
 - [x] Cadastro de usuários.
 - [x] Hashing das senhas com `Passlib` e `Bcrypt`.
 - [x] Estrutura inicial das rotas de autenticação.
 - [x] Estrutura inicial das rotas de pedidos.
 - [x] Configuração de variáveis de ambiente através de `.env`.
->>>>>>> 6612e7a (docs: update FastAPI project progress):Back-End/FastAPI/README
 - [x] Documentação automática da API através do Swagger/OpenAPI.
 
 ---
@@ -231,15 +215,9 @@ Realiza o cadastro de um novo usuário.
 
 Os dados recebidos incluem:
 
-<<<<<<< HEAD:Back-End/FastAPI/README.md
-- Username
-- E-mail
-- Senha
-=======
 - E-mail
 - Senha
 - Nome
->>>>>>> 6612e7a (docs: update FastAPI project progress):Back-End/FastAPI/README
 
 Antes de ser armazenada, a senha passa pelo processo de **hashing**.
 
@@ -327,10 +305,6 @@ Este projeto está sendo utilizado para praticar conceitos de desenvolvimento Ba
 - Gerenciamento de migrations com **Alembic**.
 - Persistência de dados utilizando **SQLite**.
 - Hashing de senhas.
-<<<<<<< HEAD:Back-End/FastAPI/README.md
-- Organização de projetos Back-End.
-- Documentação automática de APIs.
-=======
 - Configuração de variáveis de ambiente.
 - Organização de projetos Back-End.
 - Documentação automática de APIs.
@@ -342,7 +316,6 @@ Este projeto está sendo utilizado para praticar conceitos de desenvolvimento Ba
 Este projeto também faz parte da minha preparação para um **próximo projeto do SENAI**.
 
 Os conhecimentos desenvolvidos ao longo deste estudo estão sendo utilizados como base para aplicar conceitos de **Back-End, APIs, banco de dados e organização de sistemas** em um novo projeto acadêmico.
->>>>>>> 6612e7a (docs: update FastAPI project progress):Back-End/FastAPI/README
 
 ---
 
@@ -363,8 +336,4 @@ Conforme avanço nas próximas aulas do curso, novas funcionalidades, regras de 
 
 Estudante de **Análise e Desenvolvimento de Sistemas**
 
-<<<<<<< HEAD:Back-End/FastAPI/README.md
-[GitHub](https://github.com/MarcosVxn)
-=======
 [![GitHub](https://img.shields.io/badge/GitHub-MarcosVxn-000000?style=flat&logo=github&logoColor=7A1FFF)](https://github.com/MarcosVxn)
->>>>>>> 6612e7a (docs: update FastAPI project progress):Back-End/FastAPI/README
