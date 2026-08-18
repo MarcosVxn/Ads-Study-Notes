@@ -1,6 +1,8 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from models import Usuario, db
 from dependencies import pegar_sessao
+from main import bcrypt_context
+from schemas import UsuarioSchema
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
@@ -12,14 +14,15 @@ async def home():
     return{"mensagem": "Você acessou a rota padrão de autenticação", "autenticado": False}
 
 @auth_router.post("/criar_conta")
-async def criar_conta(email: str, senha: str, nome: str, session = Depends(pegar_sessao)):
-    usuario = session.query(Usuario).filter(Usuario.email==email).first()
+async def criar_conta(usuarios_sechema: UsuarioSchema, session = Depends(pegar_sessao)):
+    usuario = session.query(Usuario).filter(Usuario.email==usuarios_sechema.email).first()
     if usuario:
         #ja existe um usuario com esse email
-        return {"Mensagem": "Usuário já cadastrado"}
+        raise HTTPException(status_code=400, detail="E-mail do usuário já cadastro")
 
     else:
-        novo_usuario = Usuario(nome, email, senha)
+        senha_criptografada = bcrypt_context.hash(usuarios_sechema.senha)
+        novo_usuario = Usuario(usuarios_sechema.nome, usuarios_sechema.email, senha_criptografada,usuarios_sechema.ativo, usuarios_sechema.admin)
         session.add(novo_usuario)
         session.commit()
-        return {"Mensagem": "Usuário cadastro com sucesso"}
+        return {"Mensagem": f"Usuário cadastro com sucesso {usuarios_sechema.email}"}
