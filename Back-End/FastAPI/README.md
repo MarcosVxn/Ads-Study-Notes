@@ -2,7 +2,7 @@
 
 > ⚠️ **Status:** Em desenvolvimento  
 > Projeto desenvolvido durante meus estudos de **Back-End com Python e FastAPI**, acompanhando o curso de **FastAPI da Hashtag Programação**.  
-> **Aula 04/10 concluída — Progresso atual: Aula 05/10**
+> **Aula 05/10 concluída — Indo para a Aula 06/10**
 
 ---
 
@@ -52,6 +52,7 @@ A estrutura atual do projeto está organizada desta forma:
 
 ```text
 FastAPI/
+
 │
 ├── alembic/
 │   ├── versions/
@@ -69,7 +70,8 @@ FastAPI/
 ├── dependencies.py
 ├── main.py
 ├── models.py
-└── order_routes.py
+├── order_routes.py
+└── schemas.py
 ```
 
 ### Organização dos arquivos
@@ -85,6 +87,9 @@ Contém as rotas relacionadas aos pedidos.
 
 **`models.py`**  
 Define os modelos utilizados pelo SQLAlchemy para representar as tabelas do banco.
+
+**`schemas.py`**  
+Contém os schemas utilizados para estruturar os dados recebidos pela API.
 
 **`dependencies.py`**  
 Responsável pelas dependências utilizadas pela aplicação, incluindo o gerenciamento da sessão do banco de dados.
@@ -116,6 +121,18 @@ Diretório utilizado para armazenar o banco SQLite durante o desenvolvimento loc
 - [x] Estrutura inicial das rotas de pedidos.
 - [x] Configuração de variáveis de ambiente através de `.env`.
 - [x] Documentação automática da API através do Swagger/OpenAPI.
+
+### ✅ Aula 05/10
+
+- [x] Criação de schemas para estruturar os dados recebidos pela API.
+- [x] Criação do `LoginSchema`.
+- [x] Implementação da rota `POST /auth/login`.
+- [x] Busca do usuário pelo e-mail durante o login.
+- [x] Tratamento de erro utilizando `HTTPException`.
+- [x] Criação de uma função para geração temporária de token.
+- [x] Retorno de `access_token` na resposta do login.
+- [x] Estruturação do tipo de token como `Bearer`.
+- [x] Continuação da estruturação do fluxo de autenticação.
 
 ---
 
@@ -159,6 +176,7 @@ As migrations ficam armazenadas em:
 
 ```text
 alembic/
+
 └── versions/
 ```
 
@@ -224,6 +242,25 @@ Antes de ser armazenada, a senha passa pelo processo de **hashing**.
 #### `GET /auth/`
 
 Rota inicial utilizada para verificar o módulo de autenticação.
+
+#### `POST /auth/login`
+
+Realiza o processo de login do usuário através do e-mail informado.
+
+A API busca o usuário cadastrado pelo e-mail. Caso o usuário não seja encontrado, uma exceção HTTP é retornada.
+
+Quando o usuário é encontrado, é gerado um **token temporário de acesso**.
+
+A resposta possui a estrutura:
+
+```json
+{
+    "access_token": "token",
+    "token_type": "Bearer"
+}
+```
+
+> ⚠️ **Observação:** o token utilizado atualmente é temporário e faz parte da implementação desenvolvida durante os estudos. O mecanismo definitivo de autenticação será desenvolvido conforme o avanço do projeto.
 
 ---
 
@@ -304,7 +341,14 @@ Este projeto está sendo utilizado para praticar conceitos de desenvolvimento Ba
 - Modelagem de tabelas com **SQLAlchemy**.
 - Gerenciamento de migrations com **Alembic**.
 - Persistência de dados utilizando **SQLite**.
+- Criação e utilização de **Schemas**.
+- Estruturação e validação dos dados recebidos pela API.
 - Hashing de senhas.
+- Estruturação de processos de autenticação.
+- Implementação de login.
+- Conceito de tokens de acesso.
+- Conceito de `Bearer`.
+- Tratamento de erros HTTP com `HTTPException`.
 - Configuração de variáveis de ambiente.
 - Organização de projetos Back-End.
 - Documentação automática de APIs.
@@ -323,10 +367,13 @@ Os conhecimentos desenvolvidos ao longo deste estudo estão sendo utilizados com
 
 O projeto ainda está em desenvolvimento.
 
-Conforme avanço nas próximas aulas do curso, novas funcionalidades, regras de negócio e recursos da API serão adicionados.
+As cinco primeiras aulas do curso já foram concluídas. O próximo objetivo é avançar para a **Aula 06/10**, continuando a implementação e aprofundando os conhecimentos em desenvolvimento de APIs com FastAPI.
 
-> 📌 **Progresso atual:** Aula 05 / 10  
-> ✅ **Aula 04 concluída**
+> 📌 **Progresso atual:** Aula 05 / 10
+
+> ✅ **Aula 05 concluída**
+
+> 🚀 **Indo para a Aula 06 / 10**
 
 ---
 
