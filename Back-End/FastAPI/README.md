@@ -2,7 +2,7 @@
 
 > ⚠️ **Status:** Em desenvolvimento  
 > Projeto desenvolvido durante meus estudos de **Back-End com Python e FastAPI**, acompanhando o curso de **FastAPI da Hashtag Programação**.  
-> **Aula 05/10 concluída — Indo para a Aula 06/10**
+> **Aula 06/10 concluída — Indo para a Aula 07/10**
 
 ---
 
@@ -34,9 +34,10 @@ A documentação deste repositório representa o estado atual do projeto durante
 
 ### Bibliotecas
 
-- **Passlib + Bcrypt** — utilizado para realizar o hashing das senhas.
+- **Passlib + Bcrypt** — utilizado para realizar o hashing e a verificação das senhas.
 - **Python-dotenv** — utilizado para gerenciamento de variáveis de ambiente.
 - **Python-multipart** — suporte para processamento de dados enviados por formulários.
+- **Python-Jose** — utilizado no trabalho com tokens JWT.
 
 ### Ferramentas
 
@@ -76,28 +77,38 @@ FastAPI/
 
 ### Organização dos arquivos
 
-**`main.py`**  
+**`main.py`**
+
 Arquivo principal responsável pela inicialização da aplicação FastAPI e pelo registro das rotas.
 
-**`auth_routes.py`**  
+**`auth_routes.py`**
+
 Contém as rotas relacionadas à autenticação e usuários.
 
-**`order_routes.py`**  
+Durante o desenvolvimento do projeto, este arquivo passou a concentrar também partes relacionadas ao processo de login e autenticação utilizando tokens.
+
+**`order_routes.py`**
+
 Contém as rotas relacionadas aos pedidos.
 
-**`models.py`**  
+**`models.py`**
+
 Define os modelos utilizados pelo SQLAlchemy para representar as tabelas do banco.
 
-**`schemas.py`**  
+**`schemas.py`**
+
 Contém os schemas utilizados para estruturar os dados recebidos pela API.
 
-**`dependencies.py`**  
+**`dependencies.py`**
+
 Responsável pelas dependências utilizadas pela aplicação, incluindo o gerenciamento da sessão do banco de dados.
 
-**`alembic/`**  
+**`alembic/`**
+
 Diretório responsável pelo gerenciamento e histórico das migrations.
 
-**`data/`**  
+**`data/`**
+
 Diretório utilizado para armazenar o banco SQLite durante o desenvolvimento local.
 
 ---
@@ -133,6 +144,25 @@ Diretório utilizado para armazenar o banco SQLite durante o desenvolvimento loc
 - [x] Retorno de `access_token` na resposta do login.
 - [x] Estruturação do tipo de token como `Bearer`.
 - [x] Continuação da estruturação do fluxo de autenticação.
+
+### ✅ Aula 06/10
+
+- [x] Verificação das credenciais do usuário utilizando `verify` do Bcrypt.
+- [x] Validação da senha informada no login contra o hash armazenado no banco.
+- [x] Introdução ao conceito de **JWT (JSON Web Token)**.
+- [x] Estruturação de JWT em Header, Payload e Signature.
+- [x] Utilização de uma `SECRET_KEY` para assinatura do token.
+- [x] Utilização do algoritmo de assinatura, como `HS256`.
+- [x] Utilização da informação `sub` para identificar o usuário no token.
+- [x] Utilização da informação `exp` para definir a expiração do token.
+- [x] Estudo sobre **Access Token** e **Refresh Token**.
+- [x] Estudo sobre diferentes tempos de duração para Access Token e Refresh Token.
+- [x] Estudo da rota `/auth/refresh`.
+- [x] Aplicação correta do `Depends()` na assinatura de uma rota.
+- [x] Estudo do `OAuth2PasswordBearer`.
+- [x] Continuação da estruturação do processo de autenticação com tokens.
+
+> ⚠️ **Observação:** os itens acima representam os conceitos e implementações trabalhados durante a Aula 06 conforme o material de estudo. O projeto continua em desenvolvimento e o fluxo de autenticação poderá ser aprimorado nas próximas aulas.
 
 ---
 
@@ -247,9 +277,9 @@ Rota inicial utilizada para verificar o módulo de autenticação.
 
 Realiza o processo de login do usuário através do e-mail informado.
 
-A API busca o usuário cadastrado pelo e-mail. Caso o usuário não seja encontrado, uma exceção HTTP é retornada.
+A API busca o usuário cadastrado pelo e-mail e verifica se a senha informada corresponde ao hash armazenado no banco.
 
-Quando o usuário é encontrado, é gerado um **token temporário de acesso**.
+Quando as credenciais são válidas, é gerado um token de acesso.
 
 A resposta possui a estrutura:
 
@@ -260,7 +290,13 @@ A resposta possui a estrutura:
 }
 ```
 
-> ⚠️ **Observação:** o token utilizado atualmente é temporário e faz parte da implementação desenvolvida durante os estudos. O mecanismo definitivo de autenticação será desenvolvido conforme o avanço do projeto.
+#### `GET /auth/refresh`
+
+Rota estudada durante a Aula 06 para trabalhar com a renovação do acesso utilizando o fluxo de **Refresh Token**.
+
+A implementação envolve a validação do token e o acesso à sessão do banco através de dependência do FastAPI.
+
+> ⚠️ **Observação:** o mecanismo de autenticação continua sendo desenvolvido durante o curso.
 
 ---
 
@@ -271,6 +307,102 @@ A resposta possui a estrutura:
 Rota inicial utilizada para verificar o módulo de pedidos.
 
 > Novas rotas e funcionalidades serão adicionadas conforme o avanço das aulas.
+
+---
+
+## 🔐 Autenticação
+
+A partir das aulas de autenticação, o projeto passou a trabalhar com conceitos utilizados em aplicações reais para controlar o acesso aos recursos da API.
+
+### Hashing de senhas
+
+As senhas dos usuários não devem ser armazenadas diretamente em texto puro no banco.
+
+Durante o cadastro, a senha é transformada em um **hash utilizando Bcrypt**.
+
+No login, a senha informada pelo usuário é comparada com o hash armazenado utilizando a função `verify`.
+
+O Bcrypt não descriptografa a senha armazenada. A comparação é realizada através do próprio algoritmo de hash.
+
+### JWT
+
+O **JSON Web Token (JWT)** é utilizado como uma credencial que pode ser enviada pelo cliente para comprovar sua autenticação.
+
+Um JWT possui três partes principais:
+
+```text
+Header.Payload.Signature
+```
+
+- **Header** — informações sobre o tipo do token e algoritmo utilizado.
+- **Payload** — informações carregadas pelo token, como o identificador do usuário e sua expiração.
+- **Signature** — assinatura utilizada para verificar a integridade do token.
+
+O payload trabalhado no projeto utiliza informações como:
+
+```json
+{
+    "sub": "id_do_usuario",
+    "exp": "data_de_expiracao"
+}
+```
+
+> ⚠️ O payload de um JWT pode ser lido. Por isso, informações confidenciais, como senhas e chaves secretas, não devem ser armazenadas nele.
+
+### SECRET_KEY
+
+A `SECRET_KEY` é utilizada pelo servidor para assinar o JWT.
+
+A assinatura permite verificar se o token foi alterado depois de ser criado.
+
+A chave secreta deve permanecer protegida e não deve ser publicada no repositório.
+
+### Access Token
+
+O **Access Token** é o token utilizado para autorizar o acesso às rotas protegidas.
+
+Ele possui duração curta, reduzindo o período de validade de uma credencial caso ela seja comprometida.
+
+### Refresh Token
+
+O **Refresh Token** possui uma duração maior e é utilizado para solicitar um novo Access Token quando o anterior expira.
+
+Dessa forma, o usuário não precisa realizar novamente o login a cada expiração do Access Token.
+
+---
+
+## 🧩 Dependências do FastAPI
+
+Durante a Aula 06 também foi trabalhado o funcionamento do `Depends()`.
+
+O `Depends()` é utilizado pelo FastAPI para declarar dependências que devem ser resolvidas pelo framework.
+
+Um exemplo utilizado no fluxo do projeto é a obtenção da sessão do banco:
+
+```python
+@auth_router.get("/refresh")
+async def atualizar_sessao_token(
+    token_enviado: str,
+    session: Session = Depends(pegar_sessao)
+):
+    ...
+```
+
+Nesse caso, o FastAPI fornece a sessão para a função da rota.
+
+Um ponto importante estudado foi que não devemos tentar executar `Depends()` manualmente dentro de uma função utilitária comum esperando receber diretamente o resultado da dependência.
+
+A dependência deve ser declarada de forma que o FastAPI consiga resolvê-la durante o processamento da requisição.
+
+---
+
+## 🔑 OAuth2PasswordBearer
+
+O FastAPI possui ferramentas específicas para trabalhar com autenticação.
+
+Uma delas é o `OAuth2PasswordBearer`, utilizado para informar ao framework que uma rota trabalha com um token de autenticação enviado através do cabeçalho HTTP.
+
+Esse mecanismo também está relacionado à documentação automática do Swagger/OpenAPI e ao botão de autorização disponível na interface.
 
 ---
 
@@ -305,7 +437,7 @@ venv\Scripts\activate
 ### 3. Instale as dependências
 
 ```bash
-pip install fastapi uvicorn sqlalchemy alembic passlib[bcrypt] python-dotenv python-multipart
+pip install fastapi uvicorn sqlalchemy alembic passlib[bcrypt] python-dotenv python-multipart python-jose
 ```
 
 ### 4. Execute a aplicação
@@ -344,10 +476,18 @@ Este projeto está sendo utilizado para praticar conceitos de desenvolvimento Ba
 - Criação e utilização de **Schemas**.
 - Estruturação e validação dos dados recebidos pela API.
 - Hashing de senhas.
+- Verificação de senhas com Bcrypt.
 - Estruturação de processos de autenticação.
 - Implementação de login.
 - Conceito de tokens de acesso.
-- Conceito de `Bearer`.
+- Conceito de **JWT**.
+- Estrutura de Header, Payload e Signature.
+- Utilização de `SECRET_KEY`.
+- Conceito de `sub` e `exp` em JWT.
+- Diferença entre Access Token e Refresh Token.
+- Renovação de tokens.
+- Utilização do `Depends()`.
+- Utilização do `OAuth2PasswordBearer`.
 - Tratamento de erros HTTP com `HTTPException`.
 - Configuração de variáveis de ambiente.
 - Organização de projetos Back-End.
@@ -359,7 +499,7 @@ Este projeto está sendo utilizado para praticar conceitos de desenvolvimento Ba
 
 Este projeto também faz parte da minha preparação para um **próximo projeto do SENAI**.
 
-Os conhecimentos desenvolvidos ao longo deste estudo estão sendo utilizados como base para aplicar conceitos de **Back-End, APIs, banco de dados e organização de sistemas** em um novo projeto acadêmico.
+Os conhecimentos desenvolvidos ao longo deste estudo estão sendo utilizados como base para aplicar conceitos de **Back-End, APIs, banco de dados, autenticação e organização de sistemas** em um novo projeto acadêmico.
 
 ---
 
@@ -367,13 +507,13 @@ Os conhecimentos desenvolvidos ao longo deste estudo estão sendo utilizados com
 
 O projeto ainda está em desenvolvimento.
 
-As cinco primeiras aulas do curso já foram concluídas. O próximo objetivo é avançar para a **Aula 06/10**, continuando a implementação e aprofundando os conhecimentos em desenvolvimento de APIs com FastAPI.
+As seis primeiras aulas do curso já foram concluídas. O próximo objetivo é avançar para a **Aula 07/10**, continuando a implementação e aprofundando os conhecimentos em desenvolvimento de APIs com FastAPI.
 
-> 📌 **Progresso atual:** Aula 05 / 10
+> 📌 **Progresso atual:** Aula 06 / 10
 
-> ✅ **Aula 05 concluída**
+> ✅ **Aula 06 concluída**
 
-> 🚀 **Indo para a Aula 06 / 10**
+> 🚀 **Indo para a Aula 07 / 10**
 
 ---
 
